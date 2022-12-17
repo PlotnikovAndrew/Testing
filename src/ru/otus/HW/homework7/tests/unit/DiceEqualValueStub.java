@@ -2,7 +2,7 @@ package ru.otus.HW.homework7.tests.unit;
 
 import ru.otus.HW.homework7.game.*;
 
-public class DiceEqualValueTests implements Dice {
+public class DiceEqualValueStub implements Dice {
 
     @Override
     public int roll() {

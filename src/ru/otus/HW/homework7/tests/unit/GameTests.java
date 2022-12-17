@@ -4,18 +4,18 @@ import ru.otus.HW.homework7.game.*;
 
 import static ru.otus.HW.homework7.assertions.Assertions.*;
 import static ru.otus.HW.homework7.tests.unit.DiceHigherNumberWin.*;
-import static ru.otus.HW.homework7.tests.unit.IO.*;
+import static ru.otus.HW.homework7.tests.unit.GameWinnerPrinterStub.getWinnerName;
 
 
 public class GameTests {
     public void equalDiceValueMethod(Player player1, Player player2) {
         String scenario = "Тест на равные значения кубиков";
 
-        DiceEqualValueTests diceTest = new DiceEqualValueTests();
-        GameWinnerPrinterTest winnerPrinterTest = new GameWinnerPrinterTest();
+        DiceEqualValueStub diceTest = new DiceEqualValueStub();
+        GameWinnerPrinterStub winnerPrinterTest = new GameWinnerPrinterStub();
         Game game = new Game(diceTest, winnerPrinterTest);
         game.playGame(player1, player2);
-        String input = readerResult();
+        String input = getWinnerName();
         try {
             assertEqualDiceValue(input, player1, player2);
             System.out.printf("\"%s\" passed %n", scenario);
@@ -28,7 +28,7 @@ public class GameTests {
         String scenario = "Тест на нулевое значение игрока";
 
         DiceImpl dice = new DiceImpl();
-        GameWinnerPrinterTest winnerPrinterTest = new GameWinnerPrinterTest();
+        GameWinnerPrinterStubObsolete winnerPrinterTest = new GameWinnerPrinterStubObsolete();
         Game game = new Game(dice, winnerPrinterTest);
         try {
             for (int i = 0; i < 10; i++){
@@ -47,10 +47,10 @@ public class GameTests {
     public void higherNumberWin(Player player1, Player player2){
         String scenario = "Тест <<Большее значение - выигрывает>>";
         DiceHigherNumberWin diceHigherNumberWin = new DiceHigherNumberWin();
-        GameWinnerPrinterTest winnerPrinterTest = new GameWinnerPrinterTest();
+        GameWinnerPrinterStub winnerPrinterTest = new GameWinnerPrinterStub();
         Game game = new Game(diceHigherNumberWin, winnerPrinterTest);
         game.playGame(player1, player2);
-        String input = readerResult();
+        String input = getWinnerName();
         int valueFirstPlayer = getValue();
         int valueSecondPlayer = getValue() + 1;
         try{
