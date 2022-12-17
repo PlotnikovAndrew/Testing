@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class IO {
+public class IOObsolete {
     public static void writer(Player player){
         File file = new File("src/ru/otus/HW/homework7/tests/result.txt");
 
